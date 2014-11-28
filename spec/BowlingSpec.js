@@ -45,20 +45,42 @@ describe ('Bowling Scorecard', function() {
 
   describe('Scorecard', function() {
 
+    var scorecard;
+
+    beforeEach(function(){
+      scorecard = new Scorecard();
+    });
+
     it('should be able to create a frame', function() {
-      var scorecard = new Scorecard();
       scorecard.create(Frame);
       expect((scorecard.frames[1]).pinCount).toEqual(10);
     });
 
     it('should know how many frames it has created', function(){
-      var scorecard = new Scorecard();
       scorecard.create(Frame);
       scorecard.create(Frame);
       scorecard.create(Frame);
       scorecard.create(Frame);
-      expect((scorecard.frameCount())).toEqual(4);
+      expect(scorecard.frameCount()).toEqual(4);
     });
+
+    it('should be able to detemine the current score', function(){
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      expect(scorecard.frameCount()).toEqual(2);
+      expect(scorecard.score()).toEqual(0);
+    });
+
+    it('should be able to detemine the current score after shots', function(){
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      expect(scorecard.frameCount()).toEqual(2);
+      expect(scorecard.score()).toEqual(0);
+    });
+
+
+
+
 
   });
 

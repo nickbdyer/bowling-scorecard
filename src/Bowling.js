@@ -10,6 +10,10 @@ Frame.prototype.receiveShot = function(hitpins) {
   this.shotCount++;
 };
 
+Frame.prototype.score = function() {
+  return (10 - this.pinCount);
+};
+
 function Player() {};
 
 Player.prototype.bowl = function(hitpins, currentframe) {
@@ -19,6 +23,7 @@ Player.prototype.bowl = function(hitpins, currentframe) {
 
 function Scorecard() {
   this.nextframe = 1
+  this.frames = {}
 };
 
 Scorecard.prototype.create = function(element) {
@@ -26,10 +31,18 @@ Scorecard.prototype.create = function(element) {
   this.nextframe++;
 };
 
-Scorecard.prototype.frames = {};
-
-Scorecard.prototype.frameCount = function (){
+Scorecard.prototype.frameCount = function() { 
     var keys = [];
-    for(var k in this.frames) keys.push(k);
+    for (var k in this.frames) { keys.push(k) };
     return keys.length; 
+};
+
+Scorecard.prototype.score = function () {
+  var scores = [];
+  var total = 0;
+  for (var key in this.frames) { scores.push(this.frames[key]) };
+  for (i = 0; i < scores.length; i++) { 
+    console.log(scores)
+    total += scores[i].score() };
+  return total;
 };
