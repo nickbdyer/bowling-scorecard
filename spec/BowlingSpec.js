@@ -1,4 +1,4 @@
-describe ('Bowling Scorecard', function() {
+describe ('Bowling', function() {
 
   describe('Frame', function() {
 
@@ -82,8 +82,11 @@ describe ('Bowling Scorecard', function() {
       expect(scorecard.score()).toEqual(14);
     });
 
-
-
+    it('should not be able to create more than 10 frames', function(){
+      for (i = 0; i < 10; i++) { scorecard.create(Frame) };
+        console.log(scorecard.frames)
+      expect( function(){ scorecard.create(Frame)} ).toThrow(new Error("No more frames available, create a new game to play again."));
+    });
 
 
   });

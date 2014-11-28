@@ -27,6 +27,7 @@ function Scorecard() {
 };
 
 Scorecard.prototype.create = function(element) {
+  if (this.frameCount() >= 10) {throw new Error ("No more frames available, create a new game to play again.")}
   this.frames[this.nextframe] = (new element);
   this.nextframe++;
 };
@@ -41,8 +42,6 @@ Scorecard.prototype.score = function () {
   var scores = [];
   var total = 0;
   for (var key in this.frames) { scores.push(this.frames[key]) };
-  for (i = 0; i < scores.length; i++) { 
-    console.log(scores)
-    total += scores[i].score() };
+  for (i = 0; i < scores.length; i++) { total += scores[i].score() };
   return total;
 };
