@@ -74,8 +74,12 @@ describe ('Bowling Scorecard', function() {
     it('should be able to detemine the current score after shots', function(){
       scorecard.create(Frame);
       scorecard.create(Frame);
+      scorecard.frames[1].receiveShot(5);
+      scorecard.frames[1].receiveShot(3);
+      scorecard.frames[2].receiveShot(3);
+      scorecard.frames[2].receiveShot(3);
       expect(scorecard.frameCount()).toEqual(2);
-      expect(scorecard.score()).toEqual(0);
+      expect(scorecard.score()).toEqual(14);
     });
 
 
