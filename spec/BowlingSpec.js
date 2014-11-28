@@ -22,13 +22,14 @@ describe ('Bowling Scorecard', function() {
       expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
     });
 
-
+    it('should only receive 2 throws totalling 10 points', function() {
+      var frame = new Frame();
+      frame.receiveShot(9);
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can only hit 10 pins per frame."))
+    });
 
 
   });
-
-
-
 
 
 });
