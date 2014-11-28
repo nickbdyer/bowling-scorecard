@@ -15,3 +15,21 @@ function Player() {};
 Player.prototype.bowl = function(hitpins, currentframe) {
   currentframe.receiveShot(hitpins);
 };
+
+
+function Scorecard() {
+  this.nextframe = 1
+};
+
+Scorecard.prototype.create = function(element) {
+  this.frames[this.nextframe] = (new element);
+  this.nextframe++;
+};
+
+Scorecard.prototype.frames = {};
+
+Scorecard.prototype.frameCount = function (){
+    var keys = [];
+    for(var k in this.frames) keys.push(k);
+    return keys.length; 
+};

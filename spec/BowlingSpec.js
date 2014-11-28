@@ -43,5 +43,24 @@ describe ('Bowling Scorecard', function() {
 
   });
 
+  describe('Scorecard', function() {
+
+    it('should be able to create a frame', function() {
+      var scorecard = new Scorecard();
+      scorecard.create(Frame);
+      expect((scorecard.frames[1]).pinCount).toEqual(10);
+    });
+
+    it('should know how many frames it has created', function(){
+      var scorecard = new Scorecard();
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      expect((scorecard.frameCount())).toEqual(4);
+    });
+
+  });
+
 
 });
