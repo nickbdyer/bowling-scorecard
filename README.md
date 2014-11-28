@@ -20,5 +20,5 @@ A bowling **game** consists of 10 **frames** in which the **player** tries to kn
 - Game
 - Frames
 - Player
-- Pins
+
 
