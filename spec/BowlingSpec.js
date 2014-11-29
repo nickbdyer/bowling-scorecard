@@ -104,8 +104,19 @@ describe ('Bowling', function() {
 
     it('should not be able to create more than 10 frames', function(){
       for (i = 0; i < 10; i++) { scorecard.create(Frame) };
-        console.log(scorecard.frames)
       expect( function(){ scorecard.create(Frame)} ).toThrow(new Error("No more frames available, create a new game to play again."));
+    });
+
+    it('should update a frames score if it was a spare', function() {
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      scorecard.frames[1].receiveShot(5);
+      scorecard.frames[1].receiveShot(5);
+      scorecard.frames[2].receiveShot(6);
+      scorecard.frames[2].receiveShot(3);
+      console.log(scorecard)
+      scorecard.evaluateScores();
+      expect(scorecard.frames[1].score).toEqual(16);
     });
 
 

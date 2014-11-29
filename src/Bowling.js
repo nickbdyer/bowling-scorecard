@@ -16,10 +16,6 @@ Frame.prototype.receiveShot = function(hitpins) {
   } else { this.secondShot = hitpins; };
 };
 
-// Frame.prototype.score = function() {
-//   return (10 - this.pinCount);
-// };
-
 Frame.prototype.isSpare = function() {
   if (this.pinCount === 0 && this.secondShot !== null ) { return true };
 };
@@ -33,7 +29,6 @@ function Player() {};
 Player.prototype.bowl = function(hitpins, currentframe) {
   currentframe.receiveShot(hitpins);
 };
-
 
 function Scorecard() {
   this.nextframe = 1
@@ -59,3 +54,22 @@ Scorecard.prototype.score = function () {
   for (i = 0; i < scores.length; i++) { total += scores[i].score };
   return total;
 };
+
+Scorecard.prototype.evaluateScores = function() {
+  var scores = [];
+  var total = 0;
+  for (var key in this.frames) { scores.push(this.frames[key]) };
+  for (i = 0; i < scores.length; i++) { if (scores[i].isSpare) {scores[i].score += scores[i+=1].firstShot} };
+
+
+
+};
+
+
+
+
+
+
+
+
+
