@@ -3,6 +3,7 @@ function Frame() {
   this.shotCount = 0
   this.firstShot = null
   this.secondShot = null
+  this.score = 0
 };
 
 Frame.prototype.receiveShot = function(hitpins) {
@@ -10,13 +11,14 @@ Frame.prototype.receiveShot = function(hitpins) {
   if ((this.pinCount - hitpins) < 0 ) { throw new Error ("You can only hit 10 pins per frame.")}
   this.pinCount -= hitpins;
   this.shotCount++;
+  this.score += hitpins;
   if (this.firstShot === null) { this.firstShot = hitpins; 
   } else { this.secondShot = hitpins; };
 };
 
-Frame.prototype.score = function() {
-  return (10 - this.pinCount);
-};
+// Frame.prototype.score = function() {
+//   return (10 - this.pinCount);
+// };
 
 Frame.prototype.isSpare = function() {
   if (this.pinCount === 0 && this.secondShot !== null ) { return true };
@@ -54,6 +56,6 @@ Scorecard.prototype.score = function () {
   var scores = [];
   var total = 0;
   for (var key in this.frames) { scores.push(this.frames[key]) };
-  for (i = 0; i < scores.length; i++) { total += scores[i].score() };
+  for (i = 0; i < scores.length; i++) { total += scores[i].score };
   return total;
 };
