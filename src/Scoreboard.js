@@ -3,8 +3,8 @@ function Scorecard() {
 };
 
 Scorecard.prototype.create = function(element) {
-  if (this.frameCount() >= 10) {throw new Error ("No more frames available, create a new game to play again.")}
-  this.frames.push(new element);
+  if (this.frameCount() === 10) {throw new Error ("No more frames available, create a new game to play again.")}
+  for (i = 0; i < 10; i++) { this.frames.push(new element) };
 };
 
 Scorecard.prototype.frameCount = function() { 
