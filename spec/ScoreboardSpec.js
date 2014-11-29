@@ -8,7 +8,7 @@ describe('Scorecard', function() {
 
   it('should be able to create a frame', function() {
     scorecard.create(Frame);
-    expect((scorecard.frames[1]).pinCount).toEqual(10);
+    expect((scorecard.frames[0]).pinCount).toEqual(10);
   });
 
   it('should know how many frames it has created', function(){
@@ -29,10 +29,10 @@ describe('Scorecard', function() {
   it('should be able to detemine the current score after shots', function(){
     scorecard.create(Frame);
     scorecard.create(Frame);
-    scorecard.frames[1].receiveShot(5);
+    scorecard.frames[0].receiveShot(5);
+    scorecard.frames[0].receiveShot(3);
     scorecard.frames[1].receiveShot(3);
-    scorecard.frames[2].receiveShot(3);
-    scorecard.frames[2].receiveShot(3);
+    scorecard.frames[1].receiveShot(3);
     expect(scorecard.frameCount()).toEqual(2);
     expect(scorecard.score()).toEqual(14);
   });
@@ -45,23 +45,38 @@ describe('Scorecard', function() {
   it('should update a frames score if it was a spare', function() {
     scorecard.create(Frame);
     scorecard.create(Frame);
-    scorecard.frames[1].receiveShot(5);
-    scorecard.frames[1].receiveShot(5);
-    scorecard.frames[2].receiveShot(6);
-    scorecard.frames[2].receiveShot(3);
+    scorecard.frames[0].receiveShot(5);
+    scorecard.frames[0].receiveShot(5);
+    scorecard.frames[1].receiveShot(6);
+    scorecard.frames[1].receiveShot(3);
     scorecard.evaluateScores();
-    expect(scorecard.frames[1].score).toEqual(16);
+    expect(scorecard.frames[0].score).toEqual(16);
   });
 
-  it('should update a frames score if it was a spare', function() {
+  it('should update a frames score if it was a strike', function() {
     scorecard.create(Frame);
     scorecard.create(Frame);
-    scorecard.frames[1].receiveShot(10);
-    scorecard.frames[2].receiveShot(6);
-    scorecard.frames[2].receiveShot(3);
+    scorecard.frames[0].receiveShot(10);
+    scorecard.frames[1].receiveShot(6);
+    scorecard.frames[1].receiveShot(3);
     console.log(scorecard)
     scorecard.evaluateScores();
-    expect(scorecard.frames[1].score).toEqual(19);
+    expect(scorecard.frames[0].score).toEqual(19);
+  });
+
+  it('should update a frames score correctly with two strikes in a row', function() {
+    scorecard.create(Frame);
+    scorecard.create(Frame);
+    scorecard.create(Frame);
+    scorecard.create(Frame);
+    scorecard.frames[0].receiveShot(10);
+    scorecard.frames[1].receiveShot(10);
+    scorecard.frames[2].receiveShot(10);
+    scorecard.frames[3].receiveShot(5);
+    scorecard.frames[3].receiveShot(3);
+    console.log(scorecard)
+    scorecard.evaluateScores();
+    expect(scorecard.frames[0].score).toEqual(30);
   });
 
 
