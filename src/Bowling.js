@@ -1,6 +1,8 @@
 function Frame() {
   this.pinCount = 10
   this.shotCount = 0
+  this.firstShot = null
+  this.secondShot = null
 };
 
 Frame.prototype.receiveShot = function(hitpins) {
@@ -8,6 +10,8 @@ Frame.prototype.receiveShot = function(hitpins) {
   if ((this.pinCount - hitpins) < 0 ) { throw new Error ("You can only hit 10 pins per frame.")}
   this.pinCount -= hitpins;
   this.shotCount++;
+  if (this.firstShot === null) { this.firstShot = hitpins; 
+  } else { this.secondShot = hitpins; }
 };
 
 Frame.prototype.score = function() {
