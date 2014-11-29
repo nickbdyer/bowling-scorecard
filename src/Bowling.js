@@ -11,12 +11,16 @@ Frame.prototype.receiveShot = function(hitpins) {
   this.pinCount -= hitpins;
   this.shotCount++;
   if (this.firstShot === null) { this.firstShot = hitpins; 
-  } else { this.secondShot = hitpins; }
+  } else { this.secondShot = hitpins; };
 };
 
 Frame.prototype.score = function() {
   return (10 - this.pinCount);
 };
+
+Frame.prototype.isSpare = function() {
+  if (this.pinCount === 0 && this.secondShot !== null ) { return true };
+}
 
 function Player() {};
 

@@ -37,6 +37,12 @@ describe ('Bowling', function() {
       expect(frame.secondShot).toEqual(4);
     });
 
+    it ('should know if it is a spare', function() {
+      frame.receiveShot(4);
+      frame.receiveShot(6);
+      expect(frame.isSpare()).toBe(true);
+    });
+
 
   });
 
@@ -96,6 +102,8 @@ describe ('Bowling', function() {
         console.log(scorecard.frames)
       expect( function(){ scorecard.create(Frame)} ).toThrow(new Error("No more frames available, create a new game to play again."));
     });
+
+
 
 
   });
