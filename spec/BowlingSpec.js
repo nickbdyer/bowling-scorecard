@@ -43,6 +43,11 @@ describe ('Bowling', function() {
       expect(frame.isSpare()).toBe(true);
     });
 
+    it ('should know if it is a strike', function() {
+      frame.receiveShot(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+
 
   });
 

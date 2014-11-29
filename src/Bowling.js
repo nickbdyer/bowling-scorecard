@@ -20,7 +20,11 @@ Frame.prototype.score = function() {
 
 Frame.prototype.isSpare = function() {
   if (this.pinCount === 0 && this.secondShot !== null ) { return true };
-}
+};
+
+Frame.prototype.isStrike = function() {
+  if (this.pinCount === 0 && this.secondShot === null ) { return true };
+};
 
 function Player() {};
 
