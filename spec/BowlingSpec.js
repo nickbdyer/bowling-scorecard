@@ -114,9 +114,19 @@ describe ('Bowling', function() {
       scorecard.frames[1].receiveShot(5);
       scorecard.frames[2].receiveShot(6);
       scorecard.frames[2].receiveShot(3);
-      console.log(scorecard)
       scorecard.evaluateScores();
       expect(scorecard.frames[1].score).toEqual(16);
+    });
+
+    it('should update a frames score if it was a spare', function() {
+      scorecard.create(Frame);
+      scorecard.create(Frame);
+      scorecard.frames[1].receiveShot(10);
+      scorecard.frames[2].receiveShot(6);
+      scorecard.frames[2].receiveShot(3);
+      console.log(scorecard)
+      scorecard.evaluateScores();
+      expect(scorecard.frames[1].score).toEqual(19);
     });
 
 
