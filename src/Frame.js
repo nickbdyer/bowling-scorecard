@@ -9,6 +9,7 @@ function Frame() {
 };
 
 Frame.prototype.receiveShot = function(hitpins) {
+  console.log(this)
   if (this.isFrame10) {
     this._checkShotLegalityFrame10(hitpins);
     this._updateFrame10Stats(hitpins);
@@ -48,9 +49,15 @@ Frame.prototype._checkShotLegalityFrame10 = function(hitpins) {
 };
 
 Frame.prototype._updateFrame10Stats = function(hitpins) {
-  this.pinCount -= hitpins;
+  this._resetPins(hitpins);
   this.score += hitpins;
   if (this.firstShot === null) { this.firstShot = hitpins 
   } else if ( this.secondShot === null) { this.secondShot = hitpins 
   } else { this.thirdShot = hitpins};
+};
+
+Frame.prototype._resetPins = function(hitpins) {
+  if (hitpins === 10 ) { this.pinCount = 10 
+  } else if ( this.firstShot + this.secondShot === 10 ) { this.pinCount = 10
+  } else { this.pinCount -= hitpins };
 };

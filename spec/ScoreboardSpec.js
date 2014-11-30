@@ -138,7 +138,6 @@ describe('Scorecard', function() {
     scorecard.frames[9].receiveShot(10);
     scorecard.frames[9].receiveShot(10);
     scorecard.frames[9].receiveShot(10);
-    console.log(scorecard)
     scorecard.evaluateScores();
     expect(scorecard.score()).toEqual(300);
   });
