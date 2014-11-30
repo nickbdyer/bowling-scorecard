@@ -47,4 +47,35 @@ describe('Frame', function() {
     });
 
 
+    it ('should only allow 2 shots in frame 10 without a strike or spare', function() {
+      frame = new Frame;
+      frame.isFrame10 = true
+      frame.receiveShot(2);
+      frame.receiveShot(2);
+      console.log(frame)
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+
+    });
+
+    it ('should only allow 3 shots in frame 10 with a strike', function() {
+      frame = new Frame;
+      frame.isFrame10 = true
+      frame.receiveShot(10);
+      frame.receiveShot(5);
+      frame.receiveShot(2);
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+
+    });
+
+    it ('should only allow 3 shots in frame 10 with a spare', function() {
+      frame = new Frame;
+      frame.isFrame10 = true
+      frame.receiveShot(5);
+      frame.receiveShot(5);
+      frame.receiveShot(5);
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+
+    });
+
+
   });

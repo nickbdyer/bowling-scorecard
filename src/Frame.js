@@ -11,7 +11,6 @@ function Frame() {
 Frame.prototype.receiveShot = function(hitpins) {
   if (this.isFrame10) {
     this._checkShotLegalityFrame10(hitpins);
-    console.log(this)
     this._updateFrame10Stats(hitpins);
     this.shotCount++;
   } else { 
@@ -44,7 +43,7 @@ Frame.prototype._updateFrameStats = function(hitpins) {
 Frame.prototype._checkShotLegalityFrame10 = function(hitpins) {
   if (this.isSpare() && this.shotCount === 3) { throw new Error ("You can not receive another shot in this frame."); 
   } else if (this.isStrike() && this.shotCount === 3) { throw new Error ("You can not receive another shot in this frame."); 
-  } else if ((!this.isStrike() && !this.isSpare) && this.shotCount === 2) { throw new Error ("You can not receive another shot in this frame."); 
+  } else if ((!this.isStrike() && !this.isSpare()) && this.shotCount === 2) { throw new Error ("You can not receive another shot in this frame."); 
   };
 };
 
