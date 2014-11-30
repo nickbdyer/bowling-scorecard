@@ -55,8 +55,6 @@ describe('Scorecard', function() {
     scorecard.frames[0].receiveShot(10);
     scorecard.frames[1].receiveShot(10);
     scorecard.frames[2].receiveShot(10);
-    // scorecard.frames[3].receiveShot(5);
-    // scorecard.frames[3].receiveShot(3);
     console.log(scorecard)
     scorecard.evaluateScores();
     expect(scorecard.frames[0].score).toEqual(30);
