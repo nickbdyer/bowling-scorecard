@@ -35,7 +35,7 @@ Scorecard.prototype._evaluateSpare = function() {
 Scorecard.prototype._evaluateStrike = function() {
   for (i = 0; i < this.frames.length; i++) { 
     if (this.frames[i].isFrame10 && this.frames[i].isStrike()) {
-      this.frames[i].score += (this.frames[i].secondShot + this.frames[i].thirdShot)
+      this.frames[i].score = (10 + this.frames[i].secondShot + this.frames[i].thirdShot)
     } else if ((this.frames[i].isStrike() && this.frames[i+1].isStrike()) && this.frames[i+1].isFrame10) {
       this.frames[i].score += (this.frames[i+1].firstShot + this.frames[i+1].secondShot)
     } else if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
