@@ -5,6 +5,7 @@ function Scorecard() {
 Scorecard.prototype.create = function(element) {
   if (this.frameCount() === 10) {throw new Error ("No more frames available, create a new game to play again.")}
   for (i = 0; i < 10; i++) { this.frames.push(new element) };
+  this.frames[9].isFrame10 = true;
 };
 
 Scorecard.prototype.frameCount = function() { 
@@ -23,15 +24,25 @@ Scorecard.prototype.evaluateScores = function() {
 };
 
 Scorecard.prototype._evaluateSpare = function() {
-  for (i = 0; i < this.frames.length; i++) { if (this.frames[i].isSpare()) {this.frames[i].score += this.frames[i+1].firstShot} };
+  for (i = 0; i < this.frames.length; i++) { 
+    if (this.frames[i].isSpare() && this.frames[i].isFrame10) {
+      this.frames[i].score = 10 + this.frames[i].thirdShot 
+    } else if (this.frames[i].isSpare()) {
+      this.frames[i].score += this.frames[i+1].firstShot} 
+    };
 };
 
 Scorecard.prototype._evaluateStrike = function() {
-  for (i = 0; i < this.frames.length; i++) {   
-    if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
+  for (i = 0; i < this.frames.length; i++) { 
+    if (this.frames[i].isFrame10 && this.frames[i].isStrike()) {
+      this.frames[i].score += (this.frames[i].secondShot + this.frames[i].thirdShot)
+    } else if ((this.frames[i].isStrike() && this.frames[i+1].isStrike()) && this.frames[i+1].isFrame10) {
+      this.frames[i].score += (this.frames[i+1].firstShot + this.frames[i+1].secondShot)
+    } else if (this.frames[i].isStrike() && this.frames[i+1].isStrike()) {
       this.frames[i].score += (this.frames[i+1].firstShot + this.frames[i+2].firstShot)
     } else if (this.frames[i].isStrike()) {
       this.frames[i].score += (this.frames[i+1].firstShot + this.frames[i+1].secondShot) 
     }
   };
 };
+
