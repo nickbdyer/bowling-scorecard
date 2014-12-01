@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<center>
+  <head>
+
+  <style>
+
+  body {
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  #centralsection {
+
+    height: 1000px;
+  }
+
+  table {
+    border:1px solid black;
+    border-collapse: collapse;
+  }
+
+  td{
+    padding:10px;
+  }
+
+  .sec {
+      border:1px solid black;
+  }
+
+  .total {
+    border-left: 1px solid black;
+  }
+
+  </style>
+  <title>Bowling Scorecard</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+
+  <section id="centralsection">
+    <h1>10-Pin Bowling Scorecard</h1>
+
+      <table>
+      <tr>
+        <td id="frame1shot1">0</td>
+        <td class="sec" id="frame1shot2">0</td>
+        <td id="frame2shot1">0</td>
+        <td class="sec" id="frame2shot2">0</td>
+        <td id="frame3shot1">0</td>
+        <td class="sec" id="frame3shot2">0</td>
+        <td id="frame4shot1">0</td>
+        <td class="sec" id="frame4shot2">0</td>
+        <td id="frame5shot1">0</td>
+        <td class="sec" id="frame5shot2">0</td>
+        <td id="frame6shot1">0</td>
+        <td class="sec" id="frame6shot2">0</td>
+        <td id="frame7shot1">0</td>
+        <td class="sec" id="frame7shot2">0</td>
+        <td id="frame8shot1">0</td>
+        <td class="sec" id="frame8shot2">0</td>
+        <td id="frame9shot1">0</td>
+        <td class="sec" id="frame9shot2">0</td>
+        <td id="frame10shot1">0</td>
+        <td class="sec" id="frame10shot2">0</td>
+        <td class="sec" id="frame10shot3">0</td>
+      </tr>
+
+      <tr>
+        <td class="total" id="frame1" colspan="2">0</td>
+        <td class="total" id="frame2" colspan="2">0</td>
+        <td class="total" id="frame3" colspan="2">0</td>
+        <td class="total" id="frame4" colspan="2">0</td>
+        <td class="total" id="frame5" colspan="2">0</td>
+        <td class="total" id="frame6" colspan="2">0</td>
+        <td class="total" id="frame7" colspan="2">0</td>
+        <td class="total" id="frame8" colspan="2">0</td>
+        <td class="total" id="frame9" colspan="2">0</td>
+        <td class="total" id="frame10" colspan="3">0</td>
+      </tr>
+
+      </td>
+
+      </table>
+      <br>
+
+      <form>
+        <input id="hit" type="text" name="shotscore">
+        <button id="submit">Submit<value="SUBMIT">
+      </form>
+     </section>
+
+    <script src='src/Bowling.js'></script>
+    <script src='src/Frame.js'></script>
+    <script src='src/Player.js'></script>
+    <script src='src/Scoreboard.js'></script>
+    <script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+
+    <script>
+      $(document).ready(function() {
+
+      var scorecard = new Scorecard();
+      var player = new Player();
+      scorecard.create(Frame);
+
+        setScores = function(){
+          $('#frame1shot1').html(scorecard.frames[0].firstShot || 0);
+          $('#frame1shot2').html(scorecard.frames[0].secondShot || 0);
+          $('#frame2shot1').html(scorecard.frames[1].firstShot || 0);
+          $('#frame2shot2').html(scorecard.frames[1].secondShot || 0);
+          $('#frame3shot1').html(scorecard.frames[2].firstShot || 0);
+          $('#frame3shot2').html(scorecard.frames[2].secondShot || 0);
+          $('#frame4shot1').html(scorecard.frames[3].firstShot || 0);
+          $('#frame4shot2').html(scorecard.frames[3].secondShot || 0);
+          $('#frame5shot1').html(scorecard.frames[4].firstShot || 0);
+          $('#frame5shot2').html(scorecard.frames[4].secondShot || 0);
+          $('#frame6shot1').html(scorecard.frames[5].firstShot || 0);
+          $('#frame6shot2').html(scorecard.frames[5].secondShot || 0);
+          $('#frame7shot1').html(scorecard.frames[6].firstShot || 0);
+          $('#frame7shot2').html(scorecard.frames[6].secondShot || 0);
+          $('#frame8shot1').html(scorecard.frames[7].firstShot || 0);
+          $('#frame8shot2').html(scorecard.frames[7].secondShot || 0);
+          $('#frame9shot1').html(scorecard.frames[8].firstShot || 0);
+          $('#frame9shot2').html(scorecard.frames[8].secondShot || 0);
+          $('#frame10shot1').html(scorecard.frames[9].firstShot || 0);
+          $('#frame10shot2').html(scorecard.frames[9].secondShot || 0);
+          $('#frame10shot3').html(scorecard.frames[9].thirdShot || 0);
+          $('#frame1').html(parseInt(scorecard.frames[0].score) || 0);
+          $('#frame2').html(scorecard.frames[1].score || 0);
+          $('#frame3').html(scorecard.frames[2].score || 0);
+          $('#frame4').html(scorecard.frames[3].score || 0);
+          $('#frame5').html(scorecard.frames[4].score || 0);
+          $('#frame6').html(scorecard.frames[5].score || 0);
+          $('#frame7').html(scorecard.frames[6].score || 0);
+          $('#frame8').html(scorecard.frames[7].score || 0);
+          $('#frame9').html(scorecard.frames[8].score || 0);
+          $('#frame10').html(scorecard.frames[9].score || 0);
+        };
+
+        setScores();
+
+
+
+        $('#submit').on('click', function() {
+          event.preventDefault();
+          enterScore();
+          setScores();
+        });
+
+        console.log(scorecard)
+
+        var enterScore = function(){
+          var score = $('#hit').val();
+          $('#hit').val('');
+          player.bowl(score, scorecard.frames[0]);
+        };
+
+      });
+      </script>
+
+   <!-- <script src='/javascripts/app.js'></script> -->
+
+  </body>
+
+</html>

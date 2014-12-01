@@ -48,7 +48,7 @@ describe('Frame', function() {
 
 
     it ('should only allow 2 shots in frame 10 without a strike or spare', function() {
-      frame10 = new Frame;
+      frame10 = new FrameTen;
       frame10.isFrame10 = true
       frame10.receiveShot(2);
       frame10.receiveShot(2);
@@ -57,7 +57,7 @@ describe('Frame', function() {
     });
 
     it ('should only allow 3 shots in frame 10 with a strike', function() {
-      frame10 = new Frame;
+      frame10 = new FrameTen;
       frame10.isFrame10 = true
       frame10.receiveShot(10);
       frame10.receiveShot(5);
@@ -67,7 +67,7 @@ describe('Frame', function() {
     });
 
     it ('should only allow 3 shots in frame 10 with a spare', function() {
-      frame10 = new Frame;
+      frame10 = new FrameTen;
       frame10.isFrame10 = true
       frame10.receiveShot(5);
       frame10.receiveShot(5);
