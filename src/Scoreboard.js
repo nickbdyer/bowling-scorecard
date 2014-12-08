@@ -19,20 +19,18 @@ Scorecard.prototype.score = function () {
 };
 
 Scorecard.prototype.evaluateScores = function() {
-  this._evaluateSpare();
-  this._evaluateStrike();
-};
-
-Scorecard.prototype._evaluateSpare = function() {
   for (i = 0; i < 9; i++) { 
-   if (this.frames[i].isSpare()) { this.frames[i].score += this._firstExtraRoll(i) } 
+    this._evaluateSpare(i);
+    this._evaluateStrike(i);  
   };
 };
 
-Scorecard.prototype._evaluateStrike = function() {
-  for (i = 0; i < 9; i++) { 
+Scorecard.prototype._evaluateSpare = function(i) {
+   if (this.frames[i].isSpare()) { this.frames[i].score += this._firstExtraRoll(i) }
+};
+
+Scorecard.prototype._evaluateStrike = function(i) {
    if (this.frames[i].isStrike()) { this.frames[i].score += (this._firstExtraRoll(i) + this._secondExtraRoll(i)) }
-  };
 };
 
 Scorecard.prototype._firstExtraRoll = function(i) {
