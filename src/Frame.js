@@ -17,7 +17,7 @@ Frame.prototype.isStrike = function() {
 
 Frame.prototype.receiveShot = function(hitpins) {
   this._checkFrameLegality(hitpins);
-  this._updateFrameStats(hitpins);
+  this._updateFrameVariables(hitpins);
   this.shotCount++;
 };
 
@@ -26,9 +26,10 @@ Frame.prototype._checkFrameLegality = function(hitpins) {
   if ((this.pinCount - hitpins) < 0 ) { throw new Error ("You can only hit 10 pins per frame.")}
 };
 
-Frame.prototype._updateFrameStats = function(hitpins) {
+Frame.prototype._updateFrameVariables = function(hitpins) {
   this.pinCount -= hitpins;
   this.score += hitpins;
   this.firstShot === null ? this.firstShot = hitpins : this.secondShot = hitpins;
 };
 
+Frame.prototype.addUpYourShit = function (){}

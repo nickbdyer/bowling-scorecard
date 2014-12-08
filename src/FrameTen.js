@@ -7,7 +7,7 @@ FrameTen.prototype = new Frame();
 
 FrameTen.prototype.receiveShot = function(hitpins) {
   this._checkShotLegality(hitpins);
-  this._updateFrameStats(hitpins);
+  this._updateFrameVariables(hitpins);
   this.shotCount++;
 };
 
@@ -17,7 +17,7 @@ FrameTen.prototype._checkShotLegality = function(hitpins) {
   };
 };
 
-FrameTen.prototype._updateFrameStats = function(hitpins) {
+FrameTen.prototype._updateFrameVariables = function(hitpins) {
   this._resetPins(hitpins);
   this.score += hitpins;
   this._assignShot(hitpins);
