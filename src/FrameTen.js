@@ -3,9 +3,9 @@
 var Frame = require('../src/frame.js');
 
 function FrameTen() {
-  this.thirdShot = null
-  this.isFrame10 = true
-};
+  this.thirdShot = null;
+  this.isFrame10 = true;
+}
 
 FrameTen.prototype = new Frame();
 
@@ -18,7 +18,7 @@ FrameTen.prototype.receiveShot = function(hitpins) {
 FrameTen.prototype._checkShotLegality = function(hitpins) {
   if ( this._isSpareOrStrikeWith3Shots() || this._isNotASpareOrStrikeWith2Shots() )  { 
     throw new Error ("You can not receive another shot in this frame."); 
-  };
+  }
 };
 
 FrameTen.prototype._updateFrameVariables = function(hitpins) {
@@ -28,9 +28,9 @@ FrameTen.prototype._updateFrameVariables = function(hitpins) {
 };
 
 FrameTen.prototype._resetPins = function(hitpins) {
-  if (hitpins === 10 ) { this.pinCount = 10 
-  } else if ( this.firstShot + this.secondShot === 10 ) { this.pinCount = 10
-  } else { this.pinCount -= hitpins };
+  if (hitpins === 10 ) { this.pinCount = 10; 
+  } else if ( this.firstShot + this.secondShot === 10 ) { this.pinCount = 10;
+  } else { this.pinCount -= hitpins; }
 };
 
 FrameTen.prototype._isSpareOrStrikeWith3Shots = function() {
@@ -43,7 +43,7 @@ FrameTen.prototype._isNotASpareOrStrikeWith2Shots = function() {
 
 FrameTen.prototype._assignShot = function(hitpins) {
     this.firstShot === null ? this.firstShot = hitpins : 
-  this.secondShot === null ? this.secondShot = hitpins : this.thirdShot = hitpins
+  this.secondShot === null ? this.secondShot = hitpins : this.thirdShot = hitpins;
 };
 
 module.exports = FrameTen;

@@ -26,12 +26,12 @@ describe('Frame', function() {
     it('should only receive 2 throws', function() {
       frame.receiveShot(2);
       frame.receiveShot(2);
-      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."));
     });
 
     it('should only receive 2 throws totalling 10 points', function() {
       frame.receiveShot(9);
-      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can only hit 10 pins per frame."))
+      expect( function(){ frame.receiveShot(2);} ).toThrow(new Error("You can only hit 10 pins per frame."));
     });
 
     it('should be able to keep track of the score for each shot', function() {
@@ -54,12 +54,11 @@ describe('Frame', function() {
 
 
     it ('should only allow 2 shots in frame 10 without a strike or spare', function() {
-      frame10 = new FrameTen;
-      frame10.isFrame10 = true
+      frame10 = new FrameTen();
+      frame10.isFrame10 = true;
       frame10.receiveShot(2);
       frame10.receiveShot(2);
-      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
-
+      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."));
     });
 
     it ('should only allow 3 shots in frame 10 with a strike', function() {
