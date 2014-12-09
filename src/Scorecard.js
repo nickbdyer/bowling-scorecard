@@ -1,3 +1,7 @@
+'use strict';
+
+var Frame = require('../src/Frame');
+
 function Scorecard() {
   this.frames = [];
 };
@@ -40,3 +44,5 @@ Scorecard.prototype._firstExtraRoll = function(i) {
 Scorecard.prototype._secondExtraRoll = function(i) {
   return this.frames[i+1].secondShot || this.frames[i+2].firstShot
 };
+
+module.exports = Scorecard;

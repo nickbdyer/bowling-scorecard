@@ -1,3 +1,5 @@
+
+
 function Frame() {
   this.pinCount = 10
   this.shotCount = 0
@@ -32,4 +34,4 @@ Frame.prototype._updateFrameVariables = function(hitpins) {
   this.firstShot === null ? this.firstShot = hitpins : this.secondShot = hitpins;
 };
 
-Frame.prototype.addUpYourShit = function (){}
+module.exports = Frame;

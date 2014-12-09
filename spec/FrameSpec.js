@@ -1,8 +1,14 @@
+'use strict';
+
+var Frame = require('../src/frame.js');
+var FrameTen = require('../src/FrameTen.js');
+
 describe('Frame', function() {
 
-    var frame;
+  var frame;
+  var frame10;
 
-    beforeEach(function(){
+    beforeEach(function(){ 
       frame = new Frame();
     });
 

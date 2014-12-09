@@ -1,6 +1,13 @@
+'use strict';
+
+var Scorecard = require('../src/Scorecard');
+var Frame = require('../src/Frame');
+var FrameTen = require('../src/FrameTen');
+
 describe('Scorecard', function() {
 
-  var scorecard;
+  var scorecard, frame, frame10;
+
 
   beforeEach(function(){
     scorecard = new Scorecard();

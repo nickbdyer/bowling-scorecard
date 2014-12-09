@@ -1,3 +1,7 @@
+'use strict';
+
+var Frame = require('../src/frame.js');
+
 function FrameTen() {
   this.thirdShot = null
   this.isFrame10 = true
@@ -41,3 +45,5 @@ FrameTen.prototype._assignShot = function(hitpins) {
     this.firstShot === null ? this.firstShot = hitpins : 
   this.secondShot === null ? this.secondShot = hitpins : this.thirdShot = hitpins
 };
+
+module.exports = FrameTen;
