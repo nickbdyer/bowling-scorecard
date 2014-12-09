@@ -1,9 +1,7 @@
 'use strict';
 
 var Player = require('../src/Player');
-var Scorecard = require('../src/Scorecard');
 var Frame = require('../src/Frame');
-var FrameTen = require('../src/FrameTen');
 
 describe('Player', function() {
 

@@ -63,7 +63,6 @@ describe('Scorecard', function() {
     scorecard.frames[8].receiveShot(10);
     scorecard.frames[9].receiveShot(10);
     scorecard.frames[9].receiveShot(5);
-    console.log(scorecard)
     scorecard.frames[9].receiveShot(5);
     scorecard.evaluateScores();
     expect(scorecard.frames[8].score).toEqual(25);

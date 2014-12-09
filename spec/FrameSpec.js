@@ -1,6 +1,6 @@
 'use strict';
 
-var Frame = require('../src/frame.js');
+var Frame = require('../src/Frame.js');
 var FrameTen = require('../src/FrameTen.js');
 
 describe('Frame', function() {

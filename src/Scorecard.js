@@ -1,6 +1,7 @@
 'use strict';
 
 var Frame = require('../src/Frame');
+var FrameTen = require('../src/FrameTen');
 
 function Scorecard() {
   this.frames = [];
@@ -8,7 +9,7 @@ function Scorecard() {
 
 Scorecard.prototype.create = function(element) {
   if (this.frameCount() === 10) {throw new Error ("No more frames available, create a new game to play again.")}
-  for (i = 0; i < 9; i++) { this.frames.push(new element) };
+  for (var i = 0; i < 9; i++) { this.frames.push(new element) };
     this.frames.push(new FrameTen);
 };
 
@@ -18,12 +19,12 @@ Scorecard.prototype.frameCount = function() {
 
 Scorecard.prototype.score = function () {
   var total = 0;
-  for (i = 0; i < this.frames.length; i++) { total += this.frames[i].score };
+  for (var i = 0; i < this.frames.length; i++) { total += this.frames[i].score };
   return total;
 };
 
 Scorecard.prototype.evaluateScores = function() {
-  for (i = 0; i < 9; i++) { 
+  for (var i = 0; i < 9; i++) { 
     this._evaluateSpare(i);
     this._evaluateStrike(i);  
   };
