@@ -31,7 +31,7 @@ describe('Scorecard', function() {
   });
 
   it('should not be able to create more than 10 frames', function(){
-    expect( function(){ scorecard.create(Frame)} ).toThrow(new Error("No more frames available, create a new game to play again."));
+    expect( function(){ scorecard.create(Frame); } ).toThrow(new Error("No more frames available, create a new game to play again."));
   });
 
   it('should update a frames score if it was a spare', function() {

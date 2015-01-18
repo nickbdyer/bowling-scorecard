@@ -62,22 +62,22 @@ describe('Frame', function() {
     });
 
     it ('should only allow 3 shots in frame 10 with a strike', function() {
-      frame10 = new FrameTen;
-      frame10.isFrame10 = true
+      frame10 = new FrameTen();
+      frame10.isFrame10 = true;
       frame10.receiveShot(10);
       frame10.receiveShot(5);
       frame10.receiveShot(2);
-      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."));
 
     });
 
     it ('should only allow 3 shots in frame 10 with a spare', function() {
-      frame10 = new FrameTen;
-      frame10.isFrame10 = true
+      frame10 = new FrameTen();
+      frame10.isFrame10 = true;
       frame10.receiveShot(5);
       frame10.receiveShot(5);
       frame10.receiveShot(5);
-      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."))
+      expect( function(){ frame10.receiveShot(2);} ).toThrow(new Error("You can not receive another shot in this frame."));
     });
 
 
