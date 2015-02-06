@@ -1,6 +1,6 @@
 #Bowling Challenge
 
-[![Code Climate](https://codeclimate.com/github/nickbdyer/bowling-scorecard/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/bowling-scorecard)
+[![Code Climate](https://codeclimate.com/github/nickbdyer/bowling-scorecard/badges/gpa.svg)](https://codeclimate.com/github/nickbdyer/bowling-scorecard) [![Test Coverage](https://codeclimate.com/github/nickbdyer/bowling-scorecard/badges/coverage.svg)](https://codeclimate.com/github/nickbdyer/bowling-scorecard)
 
 Week 5 Challenge at Makers Academy
 
