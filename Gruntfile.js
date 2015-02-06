@@ -2,11 +2,26 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jasmine_node: {
-      options: {
-        forceExit: true, 
-      }, 
-      all: ['spec/']
-    },
+      task_name: {
+        options: {
+          coverage: {},
+          forceExit: true,
+          match: '.',
+          matchAll: false,
+          specFolders: ['spec'],
+          extensions: 'js',
+          specNameMatcher: 'spec',
+          captureExceptions: true,
+          junitreport: {
+            report: false,
+            savePath : './build/reports/jasmine/',
+            useDotNotation: true,
+            consolidate: true
+          }
+        },
+        src: ['**/*.js']
+      }
+    }, 
     jshint: {
       options: {
         node: true, 
@@ -27,7 +42,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-jasmine-node');
+  grunt.loadNpmTasks('grunt-jasmine-node-coverage');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 

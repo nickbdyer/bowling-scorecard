@@ -14,6 +14,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jasmine-node": "^0.2.1",
+    "grunt-jasmine-node-coverage": "^0.3.2",
     "jasmine-node": "^1.14.5",
     "jshint": "^2.5.10"
   },
